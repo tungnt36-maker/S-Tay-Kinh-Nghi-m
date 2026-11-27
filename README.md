@@ -1,12 +1,12 @@
 # Sổ tay mẹo vặt
 
-Sổ tay tra cứu hơn 3.400 mẹo đời sống bằng tiếng Việt, gói gọn trong **một file HTML**. Không cần cài đặt, không cần máy chủ: mở bằng trình duyệt là dùng được, kể cả trên điện thoại.
+Sổ tay tra cứu gần 1.300 mẹo đời sống chọn lọc bằng tiếng Việt, gói gọn trong **một file HTML**. Không cần cài đặt, không cần máy chủ: mở bằng trình duyệt là dùng được, kể cả trên điện thoại.
 
 Dự án cá nhân, tự làm.
 
 ## Có gì bên trong
 
-Mỗi mẹo đều gồm: **cách làm từng bước**, **vì sao hiệu quả**, **lưu ý** và **nguồn tham khảo**.
+Mỗi mẹo đi theo một tình huống cụ thể: **bản chất vấn đề**, **cách xử lý từng bước** (có câu nói mẫu, con số, "nếu… thì…"), **vì sao đúng**, **sai lầm hay gặp** và **nguồn tham khảo**.
 
 | Nhóm | Các mục |
 |---|---|
