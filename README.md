@@ -1,6 +1,6 @@
 # Sổ tay mẹo vặt
 
-Sổ tay tra cứu gần 3.400 mẹo đời sống bằng tiếng Việt, gói gọn trong **một file HTML**. Không cần cài đặt, không cần máy chủ: mở bằng trình duyệt là dùng được, kể cả trên điện thoại.
+Sổ tay tra cứu hơn 3.400 mẹo đời sống bằng tiếng Việt, gói gọn trong **một file HTML**. Không cần cài đặt, không cần máy chủ: mở bằng trình duyệt là dùng được, kể cả trên điện thoại.
 
 Dự án cá nhân, tự làm.
 
@@ -10,6 +10,7 @@ Mỗi mẹo đều gồm: **cách làm từng bước**, **vì sao hiệu quả*
 
 | Nhóm | Các mục |
 |---|---|
+| Bắt đầu từ đây | Vấn đề thường gặp & cách giải quyết: tiền bạc, công việc, vợ chồng, con cái, sức khoẻ, tinh thần, kinh doanh, tình huống bất ngờ |
 | Ăn uống | Món ngon nổi tiếng (Bắc – Trung – Nam – quốc tế), Nấu ăn & bí quyết đầu bếp, Ăn gì bổ khoẻ |
 | Nhà cửa & đời sống | Kỹ năng sống & cách thở (có khoá thở bụng – giọng nói), Mẹo vặt nhà cửa, Mẹo dân gian, Kinh nghiệm sống |
 | Sức khoẻ & cơ thể | Sức khoẻ & phòng bệnh, Thể thao (lộ trình tập theo tuần), Làm đẹp, Mẹ & bé, Sức khoẻ tình dục |
