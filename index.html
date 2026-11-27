@@ -266,7 +266,7 @@ $("tearBtn").addEventListener("click",()=>{calI=(calI+1+Math.floor(Math.random()
 $("askCal").addEventListener("click",()=>prefill(T[calI]));
 function prefill(t){$("qCat").value=t[0];$("q").value=`Tìm thêm các mẹo, phương pháp của chuyên gia, nghiên cứu hoặc kinh nghiệm cổ nhân về "${t[1]}" mà người bình thường ít biết: các bước cụ thể, vì sao hiệu quả, lưu ý, nguồn.`;$("q").focus();window.scrollTo({top:0,behavior:"smooth"})}
 /* gemini */
-const DEFKEY="";$("key").value=store.get("gkey","")||DEFKEY;$("model").value=store.get("gmodel2","");
+const DEFKEY="AQ.Ab8RN6JuNdCBnTg2qx09GLB-UlpkWMQnBWOtDsKZbGcK0Pd-hA\nAQ.Ab8RN6KsE60253_K7GvOnEtpH3lhg7LLMiv_cGAY6bhxLrYvyQ";$("key").value=store.get("gkey","")||DEFKEY;$("model").value=store.get("gmodel2","");
 $("key").addEventListener("change",e=>store.set("gkey",e.target.value.trim()));
 $("model").addEventListener("change",e=>store.set("gmodel2",e.target.value.trim()));
 const API="https://generativelanguage.googleapis.com/v1beta/";
