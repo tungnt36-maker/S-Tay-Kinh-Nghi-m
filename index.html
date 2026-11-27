@@ -299,8 +299,10 @@ async function callGemini(prompt,web){
    lastErr=j.error?.message||("lỗi "+r.status);
    if(web&&r.status===400&&/tool|search|ground/i.test(lastErr)){web=false;ms.push(m);continue} // model khong ho tro tim kiem -> hoi khong tim
    if(r.status===400&&/API key/i.test(lastErr))break;   // khoa sai -> doi khoa
+   if(r.status===429&&web){web=false;ms.push(m);continue}  // het luot tim tren mang -> hoi lai khong tim
    if(r.status===429&&!fixed)continue;                   // het luot model nay -> thu model khac, roi khoa khac
   }}
+ if(/quota|exceeded|RESOURCE_EXHAUSTED|rate/i.test(lastErr))throw new Error("cả "+keys.length+" khóa đều đã hết lượt miễn phí (lượt dùng chung với tool đăng Facebook). Lượt tự làm mới mỗi ngày khoảng 14–15h giờ Việt Nam; muốn dùng ngay thì thêm khóa của tài khoản Google khác vào ô Cài đặt Gemini");
  throw new Error(lastErr||"tất cả khóa đều lỗi hoặc hết lượt")}
 const SYS="Bạn là trợ lý tra cứu mẹo và kinh nghiệm sống, trả lời bằng tiếng Việt. Chỉ đưa mẹo thật sự giải quyết vấn đề mà người thường chưa chắc biết: phương pháp của chuyên gia, kết quả nghiên cứu, kinh nghiệm cổ nhân, mẹo dân gian có cơ sở. KHÔNG nêu điều hiển nhiên ai cũng biết, không nói chung chung, không định nghĩa kiến thức. Mỗi mẹo trình bày: tên mẹo; các bước làm cụ thể (số lượng, thời gian, liều lượng nếu có); vì sao hiệu quả; lưu ý; nguồn (tên chuyên gia/sách/nghiên cứu/cổ nhân). Khi được phép tìm trên mạng, ưu tiên nguồn uy tín (tạp chí khoa học, bệnh viện, tổ chức y tế, sách gốc) và không bịa nguồn. Dạng gạch đầu dòng, gọn. Sức khoẻ: dựa trên y học chính thống, nhắc đi khám khi có dấu hiệu nguy hiểm. Tình dục: mang tính giáo dục giới tính, an toàn, tôn trọng đồng thuận, không mô tả khiêu dâm. Phong thuỷ, tử vi: trình bày theo quan niệm dân gian, nói rõ chỉ mang tính tham khảo.";
 function md(s){return esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").split(/\n/).map(l=>/^\s*[-*•]\s+/.test(l)?"<li>"+l.replace(/^\s*[-*•]\s+/,"")+"</li>":l.trim()?"<p style='margin:6px 0'>"+l+"</p>":"").join("").replace(/(<li>.*?<\/li>)+/g,m=>"<ul>"+m+"</ul>")}
@@ -316,7 +318,7 @@ $("askForm").addEventListener("submit",async e=>{e.preventDefault();
   const sl=(src||[]).slice(0,8);
   out.innerHTML=md(lastAns)+(sl.length?`<p style="margin:10px 0 4px"><b>Nguồn Gemini đã tìm:</b></p><ol class="srcs">${sl.map(x=>`<li><a href="${esc(x.uri)}" target="_blank" rel="noopener">${esc(x.title)}</a></li>`).join("")}</ol>`:"")+`<p class="note">🤖 ${esc(m)} · khóa ${ki+1}${web?" · có tìm trên mạng":""}</p>`;
   if(sl.length)lastAns+="\n\nNguồn:\n"+sl.map(x=>"- "+x.title+": "+x.uri).join("\n");
- }catch(err){out.textContent="Không gọi được Gemini: "+err.message+". Nếu đang mở trong Claude, hãy mở file này bằng trình duyệt thường hoặc đưa lên web."}
+ }catch(err){out.textContent="Không gọi được Gemini: "+err.message+(/kết nối/.test(err.message)?". Nếu đang mở trong Claude, hãy mở trang bằng trình duyệt thường.":".")}
  finally{$("askBtn").disabled=false}});
 $("copyBtn").addEventListener("click",async()=>{if(!lastAns)return;try{await navigator.clipboard.writeText(lastAns);$("copyBtn").textContent="Đã chép"}catch(e){$("copyBtn").textContent="Không chép được"}setTimeout(()=>$("copyBtn").textContent="Sao chép trả lời",1500)});
 /* tu vi */
